@@ -1,0 +1,64 @@
+<assembly>
+    <id>distribution</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <baseDirectory>${project.build.finalName}</baseDirectory>
+    <fileSets>
+        <!-- bin -->
+        <fileSet>
+            <directory>${project.parent.basedir}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+        </fileSet>
+        <!-- sh -->
+        <fileSet>
+            <directory>${project.parent.basedir}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <includes>
+                <include>datart-server.sh</include>
+            </includes>
+        </fileSet>
+        <!-- cmd -->
+        <fileSet>
+            <directory>${project.parent.basedir}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <lineEnding>dos</lineEnding>
+            <includes>
+                <include>datart-server.cmd</include>
+            </includes>
+        </fileSet>
+        <!-- config -->
+        <fileSet>
+            <directory>${project.parent.basedir}/config</directory>
+            <outputDirectory>config</outputDirectory>
+        </fileSet>
+        <!-- jar -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>../lib</outputDirectory>
+            <includes>
+                <include>${project.artifactId}-*.jar</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.parent.basedir}</directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+<!--                <include>Dockerfile</include>-->
+                <include>LICENSE</include>
+                <include>README.md</include>
+<!--                <include>Deployment.md</include>-->
+            </includes>
+        </fileSet>
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+    <componentDescriptors/>
+</assembly>

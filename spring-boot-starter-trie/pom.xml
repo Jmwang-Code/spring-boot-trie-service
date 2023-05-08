@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.jmwang-code</groupId>
+        <artifactId>tire</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>io.github.jmwang-code</groupId>
+    <artifactId>spring-boot-starter-trie</artifactId>
+    <version>1.0.0</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.jmwang-code</groupId>
+            <artifactId>trie-algorithm</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.jmwang-code</groupId>
+            <artifactId>trie-data-provider</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.jmwang-code</groupId>
+            <artifactId>trie-persistence</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.jmwang-code</groupId>
+            <artifactId>trie-utils</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 配置 maven-assembly-plugin 插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        &lt;!&ndash; 打包为 zip &ndash;&gt;-->
+<!--                        <manifest>-->
+<!--                            <mainClass>com.cn.jmw.Main</mainClass>-->
+<!--                        </manifest>-->
+<!--                        <manifestEntries>-->
+<!--                            <Class-Path>lib/</Class-Path>-->
+<!--                        </manifestEntries>-->
+<!--                        <addMavenDescriptor>false</addMavenDescriptor>-->
+<!--                        <compress>true</compress>-->
+<!--                        <forced>true</forced>-->
+<!--                        <index>true</index>-->
+<!--                        <manifestEntries>-->
+<!--                            <Build-Date>${maven.build.timestamp}</Build-Date>-->
+<!--                        </manifestEntries>-->
+<!--                        <manifestEntries>-->
+<!--                            <Build-Number>s</Build-Number>-->
+<!--                        </manifestEntries>-->
+<!--                        <manifestEntries>-->
+<!--                            <Build-Tag>x</Build-Tag>-->
+<!--                        </manifestEntries>-->
+<!--                    </archive>-->
+<!--                    <finalName>${project.artifactId}-${project.version}</finalName>-->
+<!--                    &lt;!&ndash; 指定打包输出文件 &ndash;&gt;-->
+<!--                    <outputDirectory>${project.build.directory}/../</outputDirectory>-->
+<!--                </configuration>-->
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>assembly.xml</descriptor>
+                            </descriptors>
+                            <outputDirectory>${project.parent.basedir}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
