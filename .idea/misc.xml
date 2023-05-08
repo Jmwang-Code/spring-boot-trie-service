@@ -6,15 +6,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/spring-boot-starter-trie/pom.xml" />
-        <option value="$PROJECT_DIR$/trie-algorithm/pom.xml" />
-        <option value="$PROJECT_DIR$/trie-data-provider/pom.xml" />
-        <option value="$PROJECT_DIR$/trie-persistence/pom.xml" />
-        <option value="$PROJECT_DIR$/trie-utils/pom.xml" />
-      </set>
-    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
