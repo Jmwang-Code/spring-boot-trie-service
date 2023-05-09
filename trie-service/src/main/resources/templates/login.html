@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>炫酷登录界面</title>
+    <!-- 找static目录 -->
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="container">
+    <h1>Welcome!</h1>
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username</label>
+        <input name="username" type="text" id="username" placeholder="Enter Username" required>
+
+        <label for="password">Password</label>
+        <input name="password" type="password" id="password" placeholder="Enter Password" required>
+
+        <button type="submit" id="submit">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

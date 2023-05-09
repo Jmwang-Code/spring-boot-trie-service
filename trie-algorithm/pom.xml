@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>io.github.jmwang-code</groupId>
-        <artifactId>tire</artifactId>
+        <artifactId>trie</artifactId>
         <version>1.0.0</version>
     </parent>
 

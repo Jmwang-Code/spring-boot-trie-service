@@ -1,0 +1,9 @@
+${AnsiColor.RED}${AnsiStyle.BOLD}${AnsiBackground.BLACK}___________.__
+${AnsiColor.YELLOW}\__    ___/|__|______   ____
+${AnsiColor.GREEN}  |    |   |  \_  __ \_/ __ \
+${AnsiColor.CYAN}  |    |   |  ||  | \/\  ___/
+${AnsiColor.BLUE}  |____|   |__||__|    \___  >
+${AnsiColor.MAGENTA}                           \/
+${AnsiColor.BRIGHT_WHITE}                 author: Jmwang
+                 version: 1.0.0
+${AnsiColor.DEFAULT}${AnsiBackground.DEFAULT}
