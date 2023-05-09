@@ -49,7 +49,17 @@
 
     <build>
         <plugins>
-            <!-- 配置 maven-assembly-plugin 插件 -->
+            <!-- 配置 maven-assembly-plugin 插件
+
+            您的项目可以使用预制装配描述符之一轻松构建分发“装配”。
+            这些描述符处理许多常见操作，例如将项目的工件与生成的文档一起打包到一个 zip 存档中。
+            或者，您的项目可以提供自己的描述符，并假设对如何将依赖项、模块、文件集和单个文件打包到程序集中进行更高级别的控制。
+
+            https://maven.apache.org/plugins/maven-assembly-plugin/
+
+
+            https://maven.apache.org/plugins/maven-assembly-plugin/assembly.html
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -89,9 +99,11 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
+                            <!-- 描述符 指定文件assembly.xml （即最外层） -->
                             <descriptors>
                                 <descriptor>assembly.xml</descriptor>
                             </descriptors>
+                            <!-- 输出目录 -->
                             <outputDirectory>${project.parent.basedir}</outputDirectory>
                         </configuration>
                     </execution>

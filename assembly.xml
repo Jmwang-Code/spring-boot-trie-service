@@ -1,9 +1,19 @@
 <assembly>
+    <!-- 设置此程序集的 ID。这是此项目中特定文件程序集的符号名称。
+    此外，除了用于通过将组装包的值附加到生成的存档来明确命名组装包之外，id 在部署时还用作工件的分类器。 -->
     <id>distribution</id>
+
     <formats>
+        <!-- 打包成zip、tar.gz、tar.bz2、tar.snappy、tar.xz、jar、dir、war -->
         <format>zip</format>
     </formats>
+
+    <!-- includeBaseDirectory 包括基本目录(false) 设置此程序集的 ID。这是此项目中特定文件程序集的符号名称。
+    此外，除了用于通过将组装包的值附加到生成的存档来明确命名组装包之外，id 在部署时还用作工件的分类器。 -->
     <includeBaseDirectory>false</includeBaseDirectory>
+
+    <!-- 设置生成的程序集存档的基目录。如果未设置并包含 BaseDirectory == true，
+    则将使用 ${project.build.finalName}。 -->
     <baseDirectory>${project.build.finalName}</baseDirectory>
     <fileSets>
         <!-- bin -->
@@ -53,9 +63,12 @@
             </includes>
         </fileSet>
     </fileSets>
+
+    <!-- 指定要包含在程序集中的依赖项。通过提供一个或多个<依赖项集>子元素来指定依赖项集。 -->
     <dependencySets>
         <dependencySet>
             <outputDirectory>lib</outputDirectory>
+            <!-- 如果设置为 true，此属性会将所有模块包解压缩到指定的输出目录中。当设置为 false 模块包时，将作为存档 （jar） 包含在内。 -->
             <unpack>false</unpack>
             <scope>runtime</scope>
         </dependencySet>
