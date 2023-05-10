@@ -18,22 +18,6 @@ spring:
 #        username: nacos
 #        password: nacos
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-#    tags-sorter: alpha
-#    operations-sorter: alpha
-  #api-docs:
-    #path: /v3/api-docs
-#  group-configs:
-#    - group: 'jmw'
-#      paths-to-match: '/**'
-#      packages-to-scan: com.xiaominfo.knife4j.demo.web
-# knife4j
-#knife4j:
-#  enable: true
-#  setting:
-#    language: zh_cn
 
 #logging:
 #  config: classpath:logback.xml

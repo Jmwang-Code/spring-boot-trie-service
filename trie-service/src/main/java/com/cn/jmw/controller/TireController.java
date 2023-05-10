@@ -6,6 +6,10 @@ import com.cn.jmw.trie.entity.MultiCodeMode;
 import com.cn.jmw.trie.entity.TriePrefixQueryResult;
 import com.cn.jmw.trie.entity.TrieQueryResult;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.print.Book;
 import java.util.List;
 
 /**
@@ -25,6 +30,10 @@ import java.util.List;
 @RequestMapping("Tire")
 @Tag(name = "前缀树操作")
 @RefreshScope
+@ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Successful operation", content = @Content(schema = @Schema(implementation = Book.class))),
+        @ApiResponse(responseCode = "404", description = "Book not found")
+})
 public class TireController {
 
     private final TireService tireService;

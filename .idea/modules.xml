@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-starter-trie/spring-boot-starter-trie.iml" filepath="$PROJECT_DIR$/spring-boot-starter-trie/spring-boot-starter-trie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tire.iml" filepath="$PROJECT_DIR$/tire.iml" />
+    </modules>
+  </component>
+</project>

@@ -8,19 +8,24 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="data-provider-jdbc" />
+        <module name="ProviderAPI" />
+        <module name="trie-algorithm" />
         <module name="data-provider-base" />
         <module name="trie-persistence" />
         <module name="trie-utils" />
         <module name="trie-service" />
-        <module name="trie-algorithm" />
+        <module name="Comsumer-RPC" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
       <module name="spring-boot-starter-trie" target="17" />
+      <module name="tire" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Comsumer-RPC" options="-parameters" />
+      <module name="ProviderAPI" options="-parameters" />
       <module name="data-provider-base" options="-parameters" />
       <module name="data-provider-jdbc" options="-parameters" />
       <module name="spring-boot-trie-service" options="" />

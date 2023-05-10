@@ -1,0 +1,22 @@
+server:
+  port: 9528
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 152.136.154.249:8848
+#### feign
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 20000
+        readTimeout: 20000
+  httpclient:
+    connection-timeout: 20000
+    connection-timer-repeat: 20000
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
