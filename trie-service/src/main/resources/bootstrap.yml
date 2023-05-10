@@ -4,9 +4,6 @@ spring:
   profiles:
     active: dev
   cloud:
-#    inetutils:
-#      preferred-networks:
-#        - 192.168.0
     nacos:
       discovery:
         username: nacos
@@ -17,5 +14,15 @@ spring:
         username: nacos
         password: nacos
         server-addr: 152.136.154.249:8848
-server:
-  port: 8081
+        extension-configs:
+            - data-id: trie-dev.yml
+              group: DEFAULT_GROUP
+              refresh: true
+            - data-id: trie.yml
+              group: DEFAULT_GROUP
+              refresh: true
+            - data-id: trie-prod.yml
+              group: DEFAULT_GROUP
+              refresh: true
+#server:
+#  port: 8081
