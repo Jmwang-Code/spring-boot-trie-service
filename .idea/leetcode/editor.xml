@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeetcodeEditor">
+    <option name="projectConfig">
+      <map>
+        <entry key="$PROJECT_DIR$/../../leetCode Coder/leetcode/editor/cn/[219]存在重复元素 II.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../leetCode Coder/leetcode/editor/cn/doc/content/[219]存在重复元素 II.md" />
+              <option name="frontendQuestionId" value="leetcode.cn219" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../../leetCode Coder/leetcode/editor/cn/[219]存在重复元素 II.java" />
+              <option name="titleSlug" value="contains-duplicate-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

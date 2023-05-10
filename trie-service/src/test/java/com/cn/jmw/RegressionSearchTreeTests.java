@@ -1,7 +1,7 @@
 package com.cn.jmw;
 
 import com.cn.jmw.entity.ProviderEntity;
-import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+//import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.apache.bsf.BSFException;
 import org.apache.bsf.BSFManager;
 import org.junit.jupiter.api.Test;

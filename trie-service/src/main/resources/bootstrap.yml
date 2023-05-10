@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Trie
+  profiles:
+    active: dev
+  cloud:
+#    inetutils:
+#      preferred-networks:
+#        - 192.168.0
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 152.136.154.249:8848
+      config:
+        file-extension: yaml
+        username: nacos
+        password: nacos
+        server-addr: 152.136.154.249:8848
+server:
+  port: 8081

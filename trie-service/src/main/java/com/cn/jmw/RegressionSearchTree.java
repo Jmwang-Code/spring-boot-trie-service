@@ -1,18 +1,17 @@
 package com.cn.jmw;
 
-import com.cn.jmw.config.ThreadPoolConfig;
-import com.cn.jmw.entity.ProviderEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
@@ -21,10 +20,12 @@ import java.util.concurrent.ExecutorService;
  * @author jmwang-code
  */
 @Slf4j
-@SpringBootApplication(exclude = {
-        MongoAutoConfiguration.class,
-        MongoDataAutoConfiguration.class
-})
+@SpringCloudApplication
+//        (exclude = {
+//        MongoAutoConfiguration.class,
+//        MongoDataAutoConfiguration.class
+//})
+@EnableDiscoveryClient
 public class RegressionSearchTree {//implements CommandLineRunner {
 
 

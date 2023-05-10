@@ -8,6 +8,7 @@ import com.cn.jmw.trie.entity.TrieQueryResult;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("Tire")
 @Tag(name = "前缀树操作")
+@RefreshScope
 public class TireController {
 
     private final TireService tireService;

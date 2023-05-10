@@ -6,7 +6,6 @@ import com.cn.jmw.trie.entity.TrieQueryResult;
 import com.cn.jmw.trie.tokenizer.TokenizerObject;
 import com.cn.jmw.trie.tokenizer.TokenizerUtil;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
@@ -45,7 +44,6 @@ public class Tire<K, V> implements Serializable {
      */
     private final Comparator<? super K> comparator;
 
-    @Serial
     private static final long serialVersionUID = -5026535756839841605L;
 
     public Tire() {

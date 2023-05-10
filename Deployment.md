@@ -15,3 +15,7 @@ mvn clean -Pdist
 ```
 
 # 2.DOCKER
+
+# 3.CACHE迁移
+1. h2
+2. sqlite

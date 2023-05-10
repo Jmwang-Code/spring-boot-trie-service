@@ -5,7 +5,6 @@ import com.cn.jmw.trie.entity.MultiCodeMode;
 import com.cn.jmw.trie.entity.Result;
 import com.cn.jmw.trie.tokenizer.TokenizerUtil;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -23,7 +22,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class TrieNode implements Comparable<TrieNode>, Serializable {
 
-    @Serial
     private static final long serialVersionUID = 5727284941846160588L;
 
     private final static ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
