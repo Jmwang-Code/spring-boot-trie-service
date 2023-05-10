@@ -7,30 +7,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="data-provider-jdbc" />
-        <module name="trie-algorithm" />
         <module name="data-provider-base" />
         <module name="trie-persistence" />
         <module name="trie-utils" />
         <module name="trie-service" />
+        <module name="trie-algorithm" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17">
-      <module name="data-provider-base" target="17" />
-      <module name="data-provider-jdbc" target="17" />
-      <module name="Maven-Demo" target="17" />
       <module name="spring-boot-starter-trie" target="17" />
-      <module name="trie-algorithm" target="17" />
-      <module name="trie-data-provider" target="17" />
-      <module name="trie-persistence" target="17" />
-      <module name="trie-service" target="17" />
-      <module name="trie-utils" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Maven-Demo" options="" />
       <module name="data-provider-base" options="-parameters" />
       <module name="data-provider-jdbc" options="-parameters" />
+      <module name="spring-boot-trie-service" options="" />
       <module name="trie-algorithm" options="-parameters" />
       <module name="trie-persistence" options="-parameters" />
       <module name="trie-service" options="-parameters" />
