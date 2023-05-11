@@ -8,14 +8,16 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SpringCloudApplication
 //开启服务注册发现功能
 @EnableDiscoveryClient
 //开启feign调用功能
-@EnableFeignClients(basePackages = {"com.nacos.provider.api"})
+@EnableFeignClients(basePackages = "com.cn.jmw")
 public class RPC implements CommandLineRunner {
 
     public static void main(String[] args) {
@@ -33,18 +35,11 @@ public class RPC implements CommandLineRunner {
         return new RestTemplate();
     }
 
-    //feign调用生产者api
-    @Autowired
-    private ProviderTestApi providerTestApi;
 
     @Override
     public void run(String... args) throws Exception {
         //httpclient调用
 //        String forObject = restTemplate.getForObject("http://nacos-provide/helloNacos", String.class);
 //        System.out.println(forObject);
-
-        //feign调用
-        String forObject = providerTestApi.dataListLabel();
-        System.out.println(forObject);
     }
 }

@@ -9,8 +9,10 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -26,6 +28,8 @@ import java.util.concurrent.ExecutorService;
 //        MongoDataAutoConfiguration.class
 //})
 @EnableDiscoveryClient
+@EnableFeignClients
+@ComponentScan(basePackages = "com.cn.jmw")
 public class RegressionSearchTree {//implements CommandLineRunner {
 
 

@@ -1,11 +1,20 @@
 server:
-  port: 9528
+  port: 8084
 spring:
+#  security:
+#    user:
+#      name: jmw
+#      password: jmw
   application:
-    name: nacos-consumer
+    name: consumer-rpc
   cloud:
+    loadbalancer:
+      retry:
+        enabled: true
     nacos:
       discovery:
+        username: nacos
+        password: nacos
         server-addr: 152.136.154.249:8848
 #### feign
 feign:
@@ -18,5 +27,5 @@ feign:
     connection-timeout: 20000
     connection-timer-repeat: 20000
     enabled: true
-    max-connections: 200
-    max-connections-per-route: 50
+    max-connections: 500
+    max-connections-per-route: 100
