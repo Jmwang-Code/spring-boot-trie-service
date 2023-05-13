@@ -1,5 +1,7 @@
 package com.cn.jmw.uitls.algorithm.array;
 
+import com.sun.jmx.remote.internal.ArrayQueue;
+
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -222,47 +224,47 @@ public class ArrayUtils<T> {
         Arrays.sort(nums);
         //如果最小组合小于目标，直接返回
         int min = nums[0] + nums[1] + nums[2];
-        if(target < min){
+        if (target < min) {
             return min;
         }
         //如果目标大于最大组合，直接返回
-        int max = nums[nums.length-3] + nums[nums.length-2] + nums[nums.length-1];
-        if( target > max) {
+        int max = nums[nums.length - 3] + nums[nums.length - 2] + nums[nums.length - 1];
+        if (target > max) {
             return max;
         }
         //返回值 赋值最大组合
         int better_sum = max;
 
-        for (int i = 0; i <nums.length-2 ; i++) {
+        for (int i = 0; i < nums.length - 2; i++) {
             //三个节点  i ， low ，high
-            int low = i+1, high = nums.length-1;
+            int low = i + 1, high = nums.length - 1;
             int sum = 0;
             //low<high只要成立，low就可以像右移，high可以向左移
-            while (low < high){
-                min = nums[i] + nums[low] + nums[low+1];
+            while (low < high) {
+                min = nums[i] + nums[low] + nums[low + 1];
                 //当前最小组合 大于 目标,则满足条件就赋值
-                if(target < min){
-                    better_sum = Math.abs(target - min ) > Math.abs(target - better_sum ) ? better_sum : min;
+                if (target < min) {
+                    better_sum = Math.abs(target - min) > Math.abs(target - better_sum) ? better_sum : min;
                     break;
                 }
-                max = nums[i] + nums[high-1] + nums[high];
+                max = nums[i] + nums[high - 1] + nums[high];
                 //目标 大于 当前最大组合,则满足条件就赋值
-                if(target > max){
-                    better_sum = Math.abs(target - max ) > Math.abs(target - better_sum ) ? better_sum : max;
+                if (target > max) {
+                    better_sum = Math.abs(target - max) > Math.abs(target - better_sum) ? better_sum : max;
                     break;
                 }
                 sum = nums[i] + nums[low] + nums[high];
                 //否则就进行轮询，判断当前差值是否小于返回差值
-                if( Math.abs(target - sum ) < Math.abs(target - better_sum )){
+                if (Math.abs(target - sum) < Math.abs(target - better_sum)) {
                     //赋值给返回差值
                     better_sum = sum;
                 }
                 //low和high的移动
-                if( sum == target){
+                if (sum == target) {
                     return sum;
-                }else if( sum > target){
-                    high --;
-                }else {
+                } else if (sum > target) {
+                    high--;
+                } else {
                     low++;
                 }
             }
@@ -287,7 +289,7 @@ public class ArrayUtils<T> {
             swap(nums, A, B);
         }
         //最巧妙的地方就是这里，前期的铺垫已经注定了A之后的数据都是递减，这时候排序就变得简单的多o(n)足够
-        reverse(nums,A + 1);
+        reverse(nums, A + 1);
     }
 
     public void swap(int[] nums, int A, int B) {
@@ -311,16 +313,16 @@ public class ArrayUtils<T> {
     public int trap(int[] height) {
         int sum = 0;
         //第一个和最后一个的位置不论有没有墙 都不会接住雨水
-        for (int i = 1; i < height.length-1; i++) {
-            int left_max = 0,right_max = 0;
-            for (int j = i-1; j >= 0; j--) {
-                if (height[j]>left_max){
+        for (int i = 1; i < height.length - 1; i++) {
+            int left_max = 0, right_max = 0;
+            for (int j = i - 1; j >= 0; j--) {
+                if (height[j] > left_max) {
                     left_max = height[j];
                 }
             }
 
-            for (int j = i+1; j < height.length; j++) {
-                if (height[j]>right_max){
+            for (int j = i + 1; j < height.length; j++) {
+                if (height[j] > right_max) {
                     right_max = height[j];
                 }
             }
@@ -342,19 +344,19 @@ public class ArrayUtils<T> {
         int sum = 0;
 
         //获取左边最大数组 和右边最大数组,并且要去掉计算 0和length-1的索引值
-        int[] left = new int[height.length],right = new int[height.length];
-        for (int i = 1; i < height.length-1; i++) {
-            left[i] = Math.max(left[i-1],height[i-1]);
+        int[] left = new int[height.length], right = new int[height.length];
+        for (int i = 1; i < height.length - 1; i++) {
+            left[i] = Math.max(left[i - 1], height[i - 1]);
         }
 
-        for (int i = height.length-2; i > 0 ; i--) {
-            right[i] = Math.max(right[i+1],height[i+1]);
+        for (int i = height.length - 2; i > 0; i--) {
+            right[i] = Math.max(right[i + 1], height[i + 1]);
         }
 
-        for (int i = 1; i < height.length-1; i++) {
-            int min = Math.min(right[i],left[i]);
-            if (min>height[i]){
-                sum += min-height[i];
+        for (int i = 1; i < height.length - 1; i++) {
+            int min = Math.min(right[i], left[i]);
+            if (min > height[i]) {
+                sum += min - height[i];
             }
         }
         return sum;
@@ -364,17 +366,17 @@ public class ArrayUtils<T> {
      * 3.双指针
      */
     public int trap2(int[] height) {
-        int sum = 0,left = 0,min = 10000;
+        int sum = 0, left = 0, min = 10000;
         //获取左边最大数组 和右边最大数组,并且要去掉计算 0和length-1的索引值
         int[] right = new int[height.length];
-        for (int i = height.length-2; i > 0 ; i--) {
-            right[i] = Math.max(right[i+1],height[i+1]);
+        for (int i = height.length - 2; i > 0; i--) {
+            right[i] = Math.max(right[i + 1], height[i + 1]);
         }
 
         //由于left数组与 正常遍历流程方向一致，所以不需要数组存储，只需要用一个值冬天变化，固定指针就好
-        for (int i = 1; i < height.length-1; i++) {
-            left = Math.max(left,height[i-1]);
-            min = Math.min(left,right[i]);
+        for (int i = 1; i < height.length - 1; i++) {
+            left = Math.max(left, height[i - 1]);
+            min = Math.min(left, right[i]);
             if (min > height[i]) {
                 sum += min - height[i];
             }
@@ -426,7 +428,7 @@ public class ArrayUtils<T> {
 //        System.out.println(new ArrayUtils<>().threeSumClosest(new int[]{-1, 2, 1, -4}, 1));
 //        new ArrayUtils<>().nextPermutation(new int[]{3,2,1});
 //        System.out.println();
-        System.out.println(new ArrayUtils<>().trap2(new int[]{4,2,0,3,2,5}));
+        System.out.println(new ArrayUtils<>().trap2(new int[]{4, 2, 0, 3, 2, 5}));
     }
 
 }
@@ -479,6 +481,80 @@ class MedianFinder {
         }
     }
 
+    public int subarraySum(int[] nums, int k) {
+        int count = 0, pre = 0;
+        Map<Integer, Integer> map = new HashMap();
+        map.put(0, 1);
+        for (int i = 0; i < nums.length; i++) {
+            pre += nums[i];
+            if (map.containsKey(pre - k)) {
+                count += map.get(pre - k);
+            }
+            map.put(pre, map.getOrDefault(pre, 0) + 1);
+        }
+        return count;
+    }
+
+    public String minWindow(String s, String t) {
+        if (t.length() > s.length()) return "";
+        //1.创建散列表，需要存储索引
+        Map<Character, List<Integer>> map = new HashMap();
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < t.length(); j++) {
+                if (s.charAt(i) == t.charAt(j)) {
+                    List<Integer> integers = map.getOrDefault(t.charAt(j), new ArrayList<Integer>());
+                    integers.add(i);
+                    map.put(s.charAt(i), integers);
+                    break;
+                }
+            }
+        }
+
+        if (map.size() < t.length()) return "";
+
+        //存储二维查询数组  min max
+        Map<Integer, Integer> mapMax = new HashMap<>();
+
+        for (Map.Entry<Character, List<Integer>> entry : map.entrySet()) {
+            List<Integer> value = entry.getValue();
+            for (int i = 0; i < value.size(); i++) {
+                int index = 0;
+                int max = value.get(i);
+                int min = value.get(i);
+
+                for (Map.Entry<Character, List<Integer>> entrys : map.entrySet()) {
+                    int abs = Integer.MAX_VALUE;
+                    if (index++ == 0) continue;
+                    List<Integer> value1 = entrys.getValue();
+                    for (int j = 0; j < value1.size(); j++) {
+                        Integer integer = value.get(i);
+                        Integer integer1 = value1.get(j);
+                        int temp = integer > integer1 ? integer - integer1 : integer1 - integer + 1;
+                        if (abs > temp) {
+                            abs = temp;
+                            if (integer1 > max) max = integer1;
+                            if (integer1 < min) min = integer1;
+                        }
+                    }
+                }
+                mapMax.put(min, max);
+            }
+            break;
+        }
+
+        int step = Integer.MAX_VALUE;
+        int max = 0, min = 0;
+        for (Map.Entry<Integer, Integer> entry : mapMax.entrySet()) {
+            if (step > entry.getValue() - entry.getKey()) {
+                step = entry.getValue() - entry.getKey()+1;
+                max = entry.getValue();
+                min = entry.getKey();
+            }
+        }
+
+        return s.substring(min, max);
+    }
+
     public static void main(String[] args) {
         MedianFinder medianFinder = new MedianFinder();
         medianFinder.addNum(1);
@@ -486,5 +562,10 @@ class MedianFinder {
         System.out.println(medianFinder.findMedian());
         medianFinder.addNum(3);
         System.out.println(medianFinder.findMedian());
+
+        Queue queue = new LinkedList();
+        System.out.println(medianFinder.subarraySum(new int[]{1, 1, 1}, 2));
+
+        System.out.println(medianFinder.minWindow("ADOBECODEBANC", "ABC"));
     }
 }
