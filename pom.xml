@@ -25,6 +25,7 @@
         <module>trie-data-provider</module>
         <module>Comsumer-RPC</module>
         <module>ProviderAPI</module>
+        <module>gossip-controller</module>
         <!--        <module>trie-data-provider/data-provider-base</module>-->
         <!--        <module>trie-data-provider/data-provider-jdbc</module>-->
     </modules>

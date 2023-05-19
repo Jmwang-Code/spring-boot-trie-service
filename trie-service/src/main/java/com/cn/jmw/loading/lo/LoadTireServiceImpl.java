@@ -30,7 +30,7 @@ public class LoadTireServiceImpl<T,R> implements LoadTireService{
     }
 
     @Override
-    public Object loadFunction(FunctionHandler handler) {
+    public Object loadFunction(final FunctionHandler handler) {
         return handler.handle(new JdbcProvider(trieNode));
     }
 

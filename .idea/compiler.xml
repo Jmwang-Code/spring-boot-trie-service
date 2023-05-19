@@ -12,6 +12,7 @@
         <module name="trie-algorithm" />
         <module name="data-provider-base" />
         <module name="trie-persistence" />
+        <module name="gossip-controller" />
         <module name="trie-utils" />
         <module name="trie-service" />
         <module name="Comsumer-RPC" />
@@ -28,6 +29,7 @@
       <module name="ProviderAPI" options="-parameters" />
       <module name="data-provider-base" options="-parameters" />
       <module name="data-provider-jdbc" options="-parameters" />
+      <module name="gossip-controller" options="-parameters" />
       <module name="spring-boot-trie-service" options="" />
       <module name="trie-algorithm" options="-parameters" />
       <module name="trie-persistence" options="-parameters" />

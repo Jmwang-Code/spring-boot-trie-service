@@ -2,7 +2,7 @@ spring:
   application:
     name: Trie
   profiles:
-    active: dev
+    active: prod
   cloud:
     nacos:
       discovery:
