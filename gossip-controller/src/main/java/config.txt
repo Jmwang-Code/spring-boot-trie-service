@@ -1,0 +1,2 @@
+gossip_quantity:3
+timeout:5

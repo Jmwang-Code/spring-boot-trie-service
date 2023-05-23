@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/trie-utils/pom.xml" />
         <option value="$PROJECT_DIR$/trie-data-provider/data-provider-jdbc/pom.xml" />
         <option value="$PROJECT_DIR$/trie-data-provider/data-provider-base/pom.xml" />
+        <option value="$PROJECT_DIR$/gossip-controller/pom.xml" />
       </list>
     </option>
   </component>

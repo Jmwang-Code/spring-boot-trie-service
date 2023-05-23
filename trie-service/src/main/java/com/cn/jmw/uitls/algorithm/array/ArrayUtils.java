@@ -555,6 +555,44 @@ class MedianFinder {
         return s.substring(min, max);
     }
 
+    public int[] searchRange(int[] nums, int target) {
+        if (nums.length == 0 || nums[nums.length-1]<target) return new int[]{-1,-1};
+
+        int left = 0,right = nums.length-1;
+        while (left<right){
+            int mid = left + ((right-left)>>1);
+            if (nums[mid]>target){
+                right = mid-1;
+            }else if (nums[mid]<target){
+                left = mid+1;
+            }else {
+                int midright = mid,midleft = mid;
+                while (true){
+                    if (midright<right && nums[midright+1]==target){
+                        midright++;
+                    }else {
+                        break;
+                    }
+                }
+                while (true){
+                    if (midleft>left && nums[midleft-1]==target){
+                        midleft--;
+                    }else {
+                        break;
+                    }
+                }
+                left =midleft;
+                right = midright;
+                break;
+            }
+        }
+        int[] arr = new int[right-left+1];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = target;
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
         MedianFinder medianFinder = new MedianFinder();
         medianFinder.addNum(1);
@@ -567,5 +605,7 @@ class MedianFinder {
         System.out.println(medianFinder.subarraySum(new int[]{1, 1, 1}, 2));
 
         System.out.println(medianFinder.minWindow("ADOBECODEBANC", "ABC"));
+
+        System.out.println(medianFinder.searchRange(new int[]{1, 2, 5,8,8,9}, 8));
     }
 }
