@@ -1,5 +1,6 @@
 package com.cn.jmw.color;
 
+
 /**
  * @author jmw
  * @Description TODO
@@ -46,12 +47,6 @@ public enum ColorEnum256 {
     ,NUMBER36(36,5)
     ,NUMBER37(37,5)
     ,NUMBER38(38,5)
-//    ,NUMBER39(39,5)
-//    ,NUMBER40(40,5)
-//    ,NUMBER41(41,5)
-//    ,NUMBER42(42,5)
-//    ,NUMBER43(43,5)
-//    ,NUMBER44(44,5)
     ,NUMBER45(45,5)
     ,NUMBER46(46,5)
     ,NUMBER47(47,5)
@@ -112,19 +107,6 @@ public enum ColorEnum256 {
     ,NUMBER102(102,5)
     ,NUMBER103(103,5)
     ,NUMBER104(104,5)
-//    ,NUMBER105(105,5)
-//    ,NUMBER106(106,5)
-//    ,NUMBER107(107,5)
-//    ,NUMBER108(108,5)
-//    ,NUMBER109(109,5)
-//    ,NUMBER110(110,5)
-//    ,NUMBER111(111,5)
-//    ,NUMBER112(112,5)
-//    ,NUMBER113(113,5)
-//    ,NUMBER114(114,5)
-//    ,NUMBER115(115,5)
-//    ,NUMBER116(116,5)
-//    ,NUMBER117(117,5)
     ,NUMBER118(118,5)
     ,NUMBER119(119,5)
     ,NUMBER120(120,5)
@@ -148,12 +130,6 @@ public enum ColorEnum256 {
     ,NUMBER138(138,5)
     ,NUMBER139(139,5)
     ,NUMBER140(140,5)
-//    ,NUMBER141(141,5)
-//    ,NUMBER142(142,5)
-//    ,NUMBER143(143,5)
-//    ,NUMBER144(144,5)
-//    ,NUMBER145(145,5)
-//    ,NUMBER146(146,5)
     ,NUMBER147(147,5)
     ,NUMBER148(148,5)
     ,NUMBER149(149,5)
@@ -184,12 +160,6 @@ public enum ColorEnum256 {
     ,NUMBER174(174,5)
     ,NUMBER175(175,5)
     ,NUMBER176(176,5)
-//    ,NUMBER177(177,5)
-//    ,NUMBER178(178,5)
-//    ,NUMBER179(179,5)
-//    ,NUMBER180(180,5)
-//    ,NUMBER181(181,5)
-//   ,NUMBER182(182,5)
     ,NUMBER183(183,5)
     ,NUMBER184(184,5)
     ,NUMBER185(185,5)
@@ -255,20 +225,40 @@ public enum ColorEnum256 {
     ,NUMBER245(245,5)
     ,NUMBER246(246,5)
     ,NUMBER247(247,5)
-//    ,NUMBER248(248,5)
-//    ,NUMBER249(249,5)
-//    ,NUMBER250(250,5)
     ,NUMBER251(251,5)
     ,NUMBER252(252,5)
     ,NUMBER253(253,5)
     ,NUMBER254(254,5)
-    ,NUMBER255(255,5);
+    ,NUMBER255(255,5)
+    
+    ,BLACK(0, 0, 0),
+    MAROON(128, 0, 0),
+    GREEN(0, 128, 0),
+    OLIVE(128, 128, 0),
+    NAVY(0, 0, 128),
+    PURPLE(128, 0, 128),
+    TEAL(0, 128, 128),
+    SILVER(192, 192, 192),
+    GRAY(128, 128, 128),
+    RED(255, 0, 0),
+    LIME(0, 255, 0),
+    YELLOW(255, 255, 0),
+    BLUE(0, 0, 255),
+    FUCHSIA(255, 0, 255),
+    AQUA(0, 255, 255),
+    WHITE(255, 255, 255)
+    // Add more colors here
+    ;
 
     ColorEnum256() {
     }
 
     private int color;
     private int fontType;
+
+    private int red;
+    private int green;
+    private int blue;
 
     ColorEnum256(int color, int fontType) {
         this.color = color;
@@ -293,7 +283,7 @@ public enum ColorEnum256 {
         return ColorEnum256.values()[i];
     }
 
-    public static void main(String[] args) {
+    public static void getColorCard() {
         for (int i = 0; i <= 16; i++) {
             for (int j = 1; j <= 15; j++) {
                 int number = i * 15 + j;
@@ -303,4 +293,33 @@ public enum ColorEnum256 {
             System.out.println();
         }
     }
+
+
+    ColorEnum256(int red, int green, int blue) {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+    }
+
+    public int getRed() {
+        return red;
+    }
+
+    public int getGreen() {
+        return green;
+    }
+
+    public int getBlue() {
+        return blue;
+    }
+
+    public static ColorEnum256 fromRgb(int red, int green, int blue) {
+        for (ColorEnum256 color : values()) {
+            if (color.red == red && color.green == green && color.blue == blue) {
+                return color;
+            }
+        }
+        throw new IllegalArgumentException("Invalid RGB values: " + red + ", " + green + ", " + blue);
+    }
+
 }

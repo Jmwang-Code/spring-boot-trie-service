@@ -15,23 +15,12 @@ public class ThreadColor {
 
     static final Map<String, ColorEnum256> map256 = new ConcurrentHashMap(256);
 
-    public synchronized static ColorEnum8 getColor8(String threadName){
-        if (map8.containsKey(threadName)){
-            return map8.get(threadName);
-        }else {
-            ColorEnum8 colorEnum8 = ColorEnum8.getRandomColor();
-            map8.put(threadName, colorEnum8);
-            return colorEnum8;
-        }
+    public static ColorEnum8 getColor8(String threadName) {
+        return map8.computeIfAbsent(threadName, k -> ColorEnum8.getRandomColor());
     }
 
-    public synchronized static ColorEnum256 getColor256(String threadName){
-        if (map256.containsKey(threadName)){
-            return map256.get(threadName);
-        }else {
-            ColorEnum256 colorEnum256 = ColorEnum256.getRandomColor256();
-            map256.put(threadName, colorEnum256);
-            return colorEnum256;
-        }
+    public static ColorEnum256 getColor256(String threadName) {
+        return map256.computeIfAbsent(threadName, k -> ColorEnum256.getRandomColor256());
     }
+
 }
