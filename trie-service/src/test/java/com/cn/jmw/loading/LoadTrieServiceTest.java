@@ -3,9 +3,7 @@ package com.cn.jmw.loading;
 import com.cn.jmw.JdbcProvider;
 import com.cn.jmw.entity.ProviderEntity;
 import com.cn.jmw.loading.lo.*;
-import com.cn.jmw.provider.AbstractFactoryProvider;
-import com.cn.jmw.trie.Tire;
-import com.cn.jmw.trie.TrieNode;
+import com.cn.jmw.trie.Trie;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +17,14 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @Slf4j
-public class LoadTireServiceTest {
+public class LoadTrieServiceTest {
 
     @Autowired
     private ProviderEntity providerEntity;
 
     @Test
     public void test(){
-        Tire trieNode = new Tire();
+        Trie trieNode = new Trie();
         LoadTireService loadTireService = new LoadTireServiceImpl(providerEntity,trieNode);
         loadTireService.loadConsumer(o -> {
             log.info("加载判断逻辑");
@@ -87,7 +85,7 @@ public class LoadTireServiceTest {
             //应该采取何种方式加载数据
             boolean execute = false;
             try {
-                execute = new JdbcProvider(new Tire()).execute(providerEntity);
+                execute = new JdbcProvider(new Trie()).execute(providerEntity);
             } catch (Exception e) {
                 e.printStackTrace();
             }

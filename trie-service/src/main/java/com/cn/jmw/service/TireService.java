@@ -15,86 +15,121 @@ import java.util.List;
 public interface TireService {
 
     /**
-     * 添加新词
-     * word 单词数组
-     * mode 选择添加模式
-     * code 绑定代码
-     * type 扩展类型
+     * 添加一个单词到Trie中
+     *
+     * @param word 单词的整数数组表示
+     * @param mode 多音字模式
+     * @param code 单词的编码
+     * @param type 单词的类型
+     * @return 添加是否成功
      */
     boolean add(int[] word, MultiCodeMode mode, int code, int type);
 
     /**
-     * 添加新词
-     * word 单词数组
-     * mode 选择添加模式
-     * code 绑定代码
+     * 添加一个单词到Trie中
+     *
+     * @param word 单词的整数数组表示
+     * @param mode 多音字模式
+     * @param code 单词的编码
+     * @return 添加是否成功
      */
     boolean add(int[] word, MultiCodeMode mode, int code);
 
     /**
-     * 添加新词
-     * word 单词数组
-     * mode 选择添加模式
+     * 添加一个单词到Trie中
+     *
+     * @param word 单词的整数数组表示
+     * @param mode 多音字模式
+     * @return 添加是否成功
      */
     boolean add(int[] word, MultiCodeMode mode);
 
     /**
-     * 添加新词
-     * word 单词字符串
-     * mode 选择添加模式
-     * code 绑定代码
-     * type 扩展类型
+     * 添加一个单词到Trie中
+     *
+     * @param word 单词的字符串表示
+     * @param mode 多音字模式
+     * @param code 单词的编码
+     * @param type 单词的类型
+     * @return 添加是否成功
      */
     boolean add(String word, MultiCodeMode mode, int code, int type);
 
     /**
-     * 添加新词
-     * word 单词字符串
-     * mode 选择添加模式
-     * code 绑定代码
+     * 添加一个单词到Trie中
+     *
+     * @param word 单词的字符串表示
+     * @param mode 多音字模式
+     * @param code 单词的编码
+     * @return 添加是否成功
      */
     boolean add(String word, MultiCodeMode mode, int code);
 
     /**
-     * 添加新词
-     * word 单词字符串
-     * mode 选择添加模式
+     * 添加一个单词到Trie中
+     *
+     * @param word 单词的字符串表示
+     * @param mode 多音字模式
+     * @return 添加是否成功
      */
     boolean add(String word, MultiCodeMode mode);
 
     /**
-     * 在一段话内 通过关键词 获取前缀树信息
-     * word 单词字符串
+     * 获取一个单词在Trie中的查询结果
+     *
+     * @param word 单词的字符串表示
+     * @return 查询结果
      */
     TrieQueryResult get(String word);
 
     /**
-     * 获取所有编码
+     * 获取一个单词在Trie中的所有查询结果
+     *
+     * @param word 单词的字符串表示
+     * @return 查询结果列表
      */
     public List<TrieQueryResult> getAll(String word);
 
     /**
-     * 获取单词数据量
+     * 获取Trie中的单词数量
+     *
+     * @return 单词数量
      */
     int getSize();
 
     /**
-     * 获取通过前缀获取所有前缀组
+     * 获取一个单词在Trie中的前缀查询结果
+     *
+     * @param word 单词的字符串表示
+     * @return 前缀查询结果
      */
     TriePrefixQueryResult getPrefix(String word);
 
     /**
-     * 通过字符串 移除单词以及对应的编码
+     * 从Trie中删除一个单词
+     *
+     * @param word 单词的字符串表示
+     * @param code 单词的编码
+     * @param type 单词的类型
+     * @return 删除是否成功
      */
     boolean remove(String word, int code, int type);
 
     /**
-     * 通过数组 移除单词以及对应的编码
+     * 从Trie中删除一个单词
+     *
+     * @param word 单词的整数数组表示
+     * @param code 单词的编码
+     * @param type 单词的类型
+     * @return 删除是否成功
      */
     boolean remove(int[] word, int code, int type);
 
     /**
-     * 获取某个单词的辅助树深度
+     * 获取一个单词在Trie中的深度
+     *
+     * @param word 单词的字符串表示
+     * @return 单词在Trie中的深度
      */
     int getDeep(String word);
 
@@ -102,4 +137,5 @@ public interface TireService {
      * @deprecated 禁用,会删除缓存树，如果连接缓存源会删除所有缓存
      */
     void clear();
+
 }

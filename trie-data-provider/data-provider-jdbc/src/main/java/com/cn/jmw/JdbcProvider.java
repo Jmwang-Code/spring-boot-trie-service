@@ -6,11 +6,7 @@ import com.cn.jmw.adapter.AdapterFactory;
 import com.cn.jmw.config.ThreadPoolConfig;
 import com.cn.jmw.entity.ProviderEntity;
 import com.cn.jmw.provider.AbstractFactoryProvider;
-import com.cn.jmw.trie.Tire;
-import com.cn.jmw.trie.TrieNode;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import com.cn.jmw.trie.Trie;
 
 import java.io.IOException;
 import java.util.concurrent.*;
@@ -23,9 +19,9 @@ import java.util.concurrent.*;
  */
 public class JdbcProvider extends AbstractFactoryProvider {
 
-    private final Tire forest;
+    private final Trie forest;
 
-    public JdbcProvider(Tire forest) {
+    public JdbcProvider(Trie forest) {
         this.forest = forest;
     }
 

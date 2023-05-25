@@ -1,6 +1,7 @@
 package com.cn.jmw.config;
 
 import com.cn.jmw.dto.ResponseData;
+import com.cn.jmw.exceptions.TrieException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,14 +20,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class WebExceptionHandler {
 
-
+    /**
+     * 全局异常处理方法
+     * @param e 异常对象
+     * @return 响应数据
+     */
     @ResponseBody
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
     public ResponseData<Object> exceptionHandler(Exception e) {
         Object data = null;
-        //获取异常信息
-
         String msg = null;
         msg = e.getMessage();
         if (msg == null) {
@@ -35,6 +38,25 @@ public class WebExceptionHandler {
                 msg = cause.getMessage();
             }
         }
+        log.error(msg, e);
+        ResponseData.ResponseDataBuilder<Object> builder = ResponseData.builder();
+        return builder.success(false)
+                .message(msg)
+                .data(data)
+                .build();
+    }
+
+    /**
+     * 自定义异常处理方法
+     * @param e 自定义异常对象
+     * @return 响应数据
+     */
+    @ResponseBody
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(TrieException.class)
+    public ResponseData<Object> myExceptionHandler(TrieException e) {
+        Object data = null;
+        String msg = e.getMessage();
         log.error(msg, e);
         ResponseData.ResponseDataBuilder<Object> builder = ResponseData.builder();
         return builder.success(false)

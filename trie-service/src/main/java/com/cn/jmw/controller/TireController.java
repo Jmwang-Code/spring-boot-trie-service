@@ -62,36 +62,68 @@ public class TireController {
         return tireService.add(word, mode, code);
     }
 
+    /**
+     * 添加单词到前缀树中
+     * @param word 单词
+     * @param mode 多编码模式
+     * @return 添加结果
+     */
     @Operation(summary = "字符串添加")
     @PostMapping("/add")
     public ResponseData<Boolean> add(String word, MultiCodeMode mode) {
         return ResponseData.success(tireService.add(word, mode));
     }
 
+    /**
+     * 单词第一个匹配信息查询
+     * @param word 单词
+     * @return 匹配结果
+     */
     @Operation(summary = "单词第一个匹配信息查询")
     @PostMapping("/query")
     public ResponseData<TrieQueryResult> get(String word) {
         return ResponseData.success(tireService.get(word));
     }
 
+    /**
+     * 单词全部匹配信息查询
+     * @param word 单词
+     * @return 匹配结果列表
+     */
     @Operation(summary = "单词全部匹配信息查询")
     @PostMapping("/queryAll")
     public ResponseData<List<TrieQueryResult>> getAll(String word) {
         return ResponseData.success(tireService.getAll(word));
     }
 
+    /**
+     * 单词数量查询
+     * @return 单词数量
+     */
     @Operation(summary = "单词数量查询")
     @PostMapping("/size")
     public ResponseData<Integer> getSize() {
         return ResponseData.success(tireService.getSize());
     }
 
+    /**
+     * 单词前缀查询,查询子树
+     * @param word 单词
+     * @return 前缀查询结果
+     */
     @Operation(summary = "单词前缀查询,查询子树")
     @PostMapping("/prefix/query")
     public ResponseData<TriePrefixQueryResult> getPrefix(String word) {
         return ResponseData.success(tireService.getPrefix(word));
     }
 
+    /**
+     * 移除单词
+     * @param word 单词
+     * @param code 编码
+     * @param type 类型
+     * @return 移除结果
+     */
     @Operation(summary = "移除单词")
     @PostMapping("/remove")
     public ResponseData<Boolean> remove(String word, int code, int type) {
@@ -102,12 +134,20 @@ public class TireController {
         return tireService.remove(word,code,type);
     }
 
+    /**
+     * 获取子树（辅助树）深度
+     * @param word 单词
+     * @return 子树深度
+     */
     @Operation(summary = "获取子树（辅助树）深度")
     @PostMapping("/deep")
     public ResponseData<Integer> getDeep(String word) {
         return ResponseData.success(tireService.getDeep(word));
     }
 
+    /**
+     * 清空前缀树
+     */
     public void clear() {
         tireService.clear();
     }

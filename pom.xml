@@ -15,7 +15,7 @@
     <artifactId>trie</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>tire</name>
+    <name>trie</name>
 
     <modules>
         <module>trie-service</module>

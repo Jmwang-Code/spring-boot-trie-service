@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 /**
  * @author jmw
  * @Description TODO
@@ -25,6 +27,12 @@ import java.io.IOException;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    // 定义常量
+    private static final String LOGIN_PAGE = "/login";
+    private static final String LOGOUT_URL = "/logout";
+    private static final String LOGOUT_SUCCESS_URL = "/logout?logout";
+    private static final String[] PERMIT_ALL_URLS = {"/css/**", "/js/**", "/login", "/logout", "/api/**"};
 
     //springboot3.0
 //    @Bean
@@ -72,40 +80,70 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/css/**", "/js/**", "/login", "/logout","/api/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .permitAll()
-                .successHandler(authenticationSuccessHandler())
-                .and()
-                .httpBasic()
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/logout?logout")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .and()
-                .headers().frameOptions().disable()
-                .and()
-                .csrf().disable();
+//        http.authorizeRequests()
+//                .antMatchers(PERMIT_ALL_URLS).permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage(LOGIN_PAGE)
+//                    .usernameParameter("username")
+//                    .passwordParameter("password")
+//                    .permitAll()
+//                    .successHandler(authenticationSuccessHandler())
+//                .and()
+//                .httpBasic()
+//                .and()
+//                .logout()
+//                .logoutUrl(LOGOUT_URL)
+//                .logoutSuccessUrl(LOGOUT_SUCCESS_URL)
+//                .invalidateHttpSession(true)
+//                .deleteCookies("JSESSIONID")
+//                .and()
+//                .headers().frameOptions().disable()
+//                .and()
+//                .csrf().disable();
+
+        http.authorizeRequests(requests -> requests
+                        .antMatchers(PERMIT_ALL_URLS).permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(login -> login
+                        .loginPage(LOGIN_PAGE)
+                        .usernameParameter("username")
+                        .passwordParameter("password")
+                        .permitAll()
+                        .successHandler(authenticationSuccessHandler()))
+                .httpBasic(withDefaults())
+                .logout(logout -> logout
+                        .logoutUrl(LOGOUT_URL)
+                        .logoutSuccessUrl(LOGOUT_SUCCESS_URL)
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID"))
+                .headers(headers -> headers.frameOptions().disable())
+                .csrf(withDefaults());
     }
 
-
+    // 自定义AuthenticationSuccessHandler
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new CustomAuthenticationSuccessHandler();
     }
 
+    /**
+     * 自定义的AuthenticationSuccessHandler，用于在用户成功登录后重定向到指定的页面
+     */
     private static class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+        /**
+         * 重写onAuthenticationSuccess方法，在用户成功登录时被调用
+         *
+         * @param request        HTTP请求
+         * @param response       HTTP响应
+         * @param authentication 认证信息
+         * @throws IOException      如果发生I/O错误
+         * @throws ServletException 如果发生Servlet错误
+         */
         @Override
         public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-//            response.sendRedirect("/doc.html#/home");
+            // 将用户重定向到"/index"页面
             response.sendRedirect("/index");
         }
     }

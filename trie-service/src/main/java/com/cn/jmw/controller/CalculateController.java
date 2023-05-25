@@ -15,13 +15,11 @@ import java.math.BigDecimal;
 @RequestMapping("/api")
 public class CalculateController implements CalculateApi {
 
-//    @PostMapping("/add")
     @Override
     public Integer add(@RequestParam Integer a,@RequestParam Integer b){
         return a+b;
     }
 
-//    @PostMapping("/subtract")
     @Override
     public Integer subtract(@RequestParam Integer a,@RequestParam Integer b){
         return a-b;

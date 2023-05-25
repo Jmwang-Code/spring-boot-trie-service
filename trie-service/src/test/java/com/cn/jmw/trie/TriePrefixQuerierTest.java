@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * @date 2023年02月17日 10:16
  * @Version 1.0
  */
-public class TirePrefixQuerierTest {
+public class TriePrefixQuerierTest {
 
     static TrieNode trieNode = new TrieNode();
 

@@ -7,15 +7,12 @@ import com.cn.jmw.color.ThreadColor;
 import com.cn.jmw.driver.DefaultNonRelationalDataBaseDriver;
 import com.cn.jmw.entity.DataSource;
 import com.cn.jmw.result.TrieResultSetHandler;
-import com.cn.jmw.trie.Tire;
-import com.cn.jmw.trie.TrieNode;
+import com.cn.jmw.trie.Trie;
 import com.cn.jmw.trie.entity.MultiCodeMode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbutils.QueryRunner;
 
-import java.io.Closeable;
 import java.sql.*;
-import java.util.concurrent.atomic.AtomicLong;
 
 
 /**
@@ -35,14 +32,14 @@ public class JdbcAdapter implements Adapter<Boolean> {
 
     protected QueryRunner queryRunner;
 
-    protected Tire trieNode;
+    protected Trie trieNode;
 
-    public JdbcAdapter(DataSource dataSource,Tire trieNode) {
+    public JdbcAdapter(DataSource dataSource, Trie trieNode) {
         init(dataSource,trieNode);
     }
 
 
-    public void init(DataSource dataSource, Tire trieNode) {
+    public void init(DataSource dataSource, Trie trieNode) {
         try {
             if (!DefaultNonRelationalDataBaseDriver.class.getName().equals(dataSource.getDriverClassName())) {
                 Class.forName(dataSource.getDriverClassName());

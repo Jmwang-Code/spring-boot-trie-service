@@ -1,8 +1,7 @@
 package com.cn.jmw.adapter;
 
 import com.cn.jmw.entity.DataSource;
-import com.cn.jmw.trie.Tire;
-import com.cn.jmw.trie.TrieNode;
+import com.cn.jmw.trie.Trie;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -15,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MysqlAdapter extends JdbcAdapter {
 
-    public MysqlAdapter(DataSource dataSource, Tire trieNode) {
+    public MysqlAdapter(DataSource dataSource, Trie trieNode) {
         super(dataSource, trieNode);
     }
 }

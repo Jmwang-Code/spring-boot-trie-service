@@ -9,7 +9,6 @@ import com.cn.jmw.trie.tokenizer.TokenizerUtil;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -19,7 +18,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @date 2023年02月21日 16:08
  * @Version 1.0
  */
-public class Tire<K, V> implements Serializable {
+public class Trie<K, V> implements Serializable {
 
     private final static ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
 
@@ -46,12 +45,12 @@ public class Tire<K, V> implements Serializable {
 
     private static final long serialVersionUID = -5026535756839841605L;
 
-    public Tire() {
+    public Trie() {
         this.comparator = null;
         mainTree = new TrieNode();
     }
 
-    public Tire(Comparator<? super K> comparator) {
+    public Trie(Comparator<? super K> comparator) {
         this.comparator = comparator;
         mainTree = new TrieNode();
     }

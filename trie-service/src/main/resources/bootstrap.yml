@@ -3,6 +3,11 @@ spring:
     name: Trie
   profiles:
     active: prod
+  trie:
+    create-trie: true
+    schedule:
+#      enable: false #default false
+      fixedDelay: 15000 #default 3600000
   cloud:
     nacos:
       discovery:

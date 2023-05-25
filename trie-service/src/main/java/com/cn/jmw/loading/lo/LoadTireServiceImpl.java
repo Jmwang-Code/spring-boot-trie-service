@@ -2,9 +2,7 @@ package com.cn.jmw.loading.lo;
 
 import com.cn.jmw.JdbcProvider;
 import com.cn.jmw.entity.ProviderEntity;
-import com.cn.jmw.trie.Tire;
-import com.cn.jmw.trie.TrieNode;
-import org.springframework.stereotype.Component;
+import com.cn.jmw.trie.Trie;
 
 /**
  * @author jmw
@@ -16,9 +14,9 @@ public class LoadTireServiceImpl<T,R> implements LoadTireService{
 
     private ProviderEntity providerEntity;
 
-    private Tire trieNode;
+    private Trie trieNode;
 
-    public LoadTireServiceImpl(ProviderEntity providerEntity,Tire trieNode){
+    public LoadTireServiceImpl(ProviderEntity providerEntity, Trie trieNode){
         this.providerEntity = providerEntity;
         this.trieNode = trieNode;
     }

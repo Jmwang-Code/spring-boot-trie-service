@@ -40,8 +40,8 @@ function logout() {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, log me out!'
         }).then((result) => {
-            if (result.isConfirmed) {
-                $.post("/logout", function(data) {
+            if (result) {
+                $.get("/logout", function(data) {
                     window.location.href = "/login";
                 });
             }
@@ -119,3 +119,4 @@ function fullscreen() {
         fullscreenButton.disabled = true;
     }
 }
+

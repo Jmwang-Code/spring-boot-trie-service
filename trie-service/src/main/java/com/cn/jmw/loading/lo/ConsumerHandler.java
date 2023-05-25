@@ -1,10 +1,7 @@
 package com.cn.jmw.loading.lo;
 
 
-import com.cn.jmw.JdbcProvider;
-import com.cn.jmw.loading.JDBCProvider;
 import com.cn.jmw.provider.AbstractFactoryProvider;
-import lombok.extern.slf4j.Slf4j;
 
 @FunctionalInterface
 /**

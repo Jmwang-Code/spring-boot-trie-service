@@ -2,7 +2,7 @@
 回归检索树，是一种特殊的检索工具，想要快速关联查询出一系列字段并且展示，通过关键字段，通过前后非线性回归的方式检索，以毫秒级别的速度（1 ms）快速返回多组数列。
 
 # 未完成需求
-<h2><span style="color:red"> 1. persistence 接入 tire-data-provider  </span></h2> 
+<h2><span style="color:red"> 1. persistence 接入 trie-data-provider  </span></h2> 
 [地址](\trie-data-provider\data-provider-jdbc\src\main\java\com\cn\jmw\adapter\JdbcAdapter.java)
 <h2><span style="color:orange"> 2. persistence 接入 loading </span></h2>
 [地址](\spring-boot-starter-trie\src\main\java\com\cn\jmw\loading\lo)

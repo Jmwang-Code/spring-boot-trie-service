@@ -36,6 +36,12 @@ public class LoginController {
         return "trie";
     }
 
+    /**
+     * 注销当前用户的登录状态
+     * @param request HTTP请求
+     * @param response HTTP响应
+     * @return 注销结果
+     */
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         //注销当前用户的登录状态
@@ -45,7 +51,6 @@ public class LoginController {
         }
         //重定向到登录页面
         return "redirect:/login?logout";
-//        return "/logout";
     }
 
     @GetMapping("/api")

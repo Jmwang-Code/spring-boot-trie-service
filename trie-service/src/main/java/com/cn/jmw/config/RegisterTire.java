@@ -1,6 +1,9 @@
 package com.cn.jmw.config;
 
-import com.cn.jmw.trie.Tire;
+import com.cn.jmw.trie.Trie;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,8 +16,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RegisterTire {
 
+    /**
+     * 注册前缀树，空节点，无数据
+     * @return Trie<Object,Object>
+     */
     @Bean
-    public Tire tire() {
-        return new Tire();
+    @ConditionalOnProperty(name = "spring.trie.create-trie", havingValue = "true",matchIfMissing = true)
+    public Trie<Object,Object> tire() {
+        return new Trie<Object,Object>();
     }
+
 }
