@@ -2,7 +2,7 @@ package com.cn.jmw.entity;
 
 /**
  * @author jmw
- * @Description TODO
+ * @Description 本地数据库实体类。
  * @date 2023年04月27日 14:21
  * @Version 1.0
  */

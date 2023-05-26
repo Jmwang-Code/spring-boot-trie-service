@@ -1,14 +1,9 @@
 package com.cn.jmw.entity;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 /**

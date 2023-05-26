@@ -9,13 +9,20 @@ import java.sql.SQLException;
 @Slf4j
 /**
  * @author jmw
- * @Description TODO
+ * @Description JDBC数据源类，用于获取数据库连接。
  * @date 2023年04月05日 18:13
  * @Version 1.0
  */
 public class JdbcDataSource {
 
-    //未关闭
+    /**
+     * 获取数据库连接。
+     * @param driver 数据库驱动
+     * @param url 数据库URL
+     * @param username 数据库用户名
+     * @param password 数据库密码
+     * @return 数据库连接
+     */
     public static Connection getConnection(String driver, String url, String username, String password)  {
         Connection connection = null;
         try {

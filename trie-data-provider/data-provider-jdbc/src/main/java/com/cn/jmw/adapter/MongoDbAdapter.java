@@ -1,14 +1,15 @@
-//package com.cn.jmw.adapter;
-//
-//import com.cn.jmw.color.ThreadColor;
-//import com.cn.jmw.entity.DataSource;
-//import com.cn.jmw.trie.Tire;
-//import com.cn.jmw.trie.entity.MultiCodeMode;
-//import com.mongodb.reactivestreams.client.*;
-//import lombok.extern.slf4j.Slf4j;
-//import org.bson.Document;
-//import org.reactivestreams.Subscriber;
-//import org.reactivestreams.Subscription;
+// package com.cn.jmw.adapter;
+
+// import com.cn.jmw.base.Counter;
+// import com.cn.jmw.color.ThreadColor;
+// import com.cn.jmw.entity.DataSource;
+// import com.cn.jmw.trie.Trie;
+// import com.cn.jmw.trie.entity.MultiCodeMode;
+// import com.mongodb.reactivestreams.client.*;
+// import lombok.extern.slf4j.Slf4j;
+// import org.bson.Document;
+// import org.reactivestreams.Subscriber;
+// import org.reactivestreams.Subscription;
 //
 //import java.sql.SQLException;
 //
@@ -110,3 +111,71 @@
 //
 //
 //}
+
+
+
+// @Slf4j
+// public class MongoDbAdapter extends JdbcAdapter {
+
+//     private MongoClient mongoClient;
+//     private MongoCollection<Document> documentMongoCollection;
+
+//     public MongoDbAdapter(DataSource dataSource, Trie<Object,Object> trieNode) {
+//         super(dataSource, trieNode);
+//         this.documentMongoCollection = connectMongoDB();
+//     }
+
+//     // 连接MongoDB
+//     public MongoCollection<Document> connectMongoDB() {
+//         MongoCollection<Document> collection = null;
+//         try {
+//             mongoClient = MongoClients.create(dataSource.getUrl());
+
+//             // 获取MongoDB数据库
+//             MongoDatabase db = mongoClient.getDatabase(dataSource.getUrl().split("/")[3]);
+
+//             // 获取MongoDB集合
+//             collection = db.getCollection(dataSource.getSqlCode().get(0).getSql().split("from")[1].split(" ")[1]);
+
+//         } catch (Exception e) {
+//             log.error("连接MongoDB失败", e);
+//         }
+//         return collection;
+//     }
+
+//     @Override
+//     public boolean test() {
+//         return documentMongoCollection != null;
+//     }
+
+//     @Override
+//     public Boolean streamingRead() {
+//         Counter counter = new Counter();
+//         dataSource.getSqlCode().parallelStream().forEach(sqlCode -> {
+//             try {
+//                 FindIterable<Document> documents = documentMongoCollection.find();
+//                 for (Document document : documents) {
+//                     for (String key : document.keySet()) {
+//                         Object value = document.get(key);
+//                         if (value instanceof String) {
+//                             trieNode.add((String) value, MultiCodeMode.Drop);
+//                             log.info(ThreadColor.getColor256(Thread.currentThread().getName()).getColoredString(Thread.currentThread().getName() + "——" + value));
+//                         }
+//                     }
+//                     counter.inc();
+//                 }
+//                 log.info(ThreadColor.getColor8(Thread.currentThread().getName()).getColoredString(Thread.currentThread().getName() + "——" + sqlCode.getSql() + "——单词加载树量" + counter.value()));
+//             } catch (Exception e) {
+//                 log.error("从MongoDB读取数据失败", e);
+//             }
+//         });
+//         return true;
+//     }
+
+//     @Override
+//     public void close() {
+//         if (mongoClient != null) {
+//             mongoClient.close();
+//         }
+//     }
+// }

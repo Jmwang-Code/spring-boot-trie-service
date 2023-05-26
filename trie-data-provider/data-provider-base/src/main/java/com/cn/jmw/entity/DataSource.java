@@ -5,23 +5,57 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author jmw
- * @Description TODO
- * @date 2023年04月09日 21:03
- * @Version 1.0
+ * 数据源实体类。
  */
 @Data
 public class DataSource {
+  /**
+     * 数据源类型。
+     */
     private String type;
+
+    /**
+     * 数据库驱动类名。
+     */
     private String driverClassName;
+
+    /**
+     * 数据库连接字符串。
+     */
     private String url;
+
+    /**
+     * 数据库用户名。
+     */
     private String username;
+
+    /**
+     * 数据库密码。
+     */
     private String password;
-    //默认使用sql语句，而不是使用sql生成器
+
+    /**
+     * 是否使用SQL语句。
+     */
     private boolean useSql = true;
+
+    /**
+     * SQL代码列表。
+     */
     private List<SqlCode> sqlCode;
-    private boolean useSqlQenerator = false;
+
+    /**
+     * 是否使用SQL生成器。
+     */
+    private boolean useSqlGenerator = false;
     private List<ProviderEntity.SqlQenerator> sqlQenerators;
+    /**
+     * 最大等待时间（毫秒）。
+     */
     private int maxWaitMillis = 60 * 1000;
+
+    /**
+     * 数据加载类型。
+     */
     private LoadOn loadOn;
 }

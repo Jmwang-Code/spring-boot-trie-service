@@ -12,10 +12,16 @@ import java.lang.reflect.InvocationTargetException;
  * @author jmw
  * @date 2023年04月10日 18:07
  * @Version 1.0
+ * 适配器工厂，用于创建适配器。
  */
 @Slf4j
 public class AdapterFactory {
-    //这里快速创建一个适配器，根据数据源类型，创建对应的适配器
+    /**
+     * 创建适配器，根据数据源类型创建对应的适配器。
+     * @param dataSource 数据源
+     * @param trieNode Trie树节点
+     * @return 创建的适配器
+     */
     public static Adapter<Boolean> createDataAdapter(DataSource dataSource, Trie trieNode) {
         AdapterEnum adapterEnum = AdapterEnum.getAdapterEnum(dataSource.getType());
         log.info(ThreadColor.getColor256(Thread.currentThread().getName()).getColoredString(Thread.currentThread().getName()+"——创建适配器:"+adapterEnum));

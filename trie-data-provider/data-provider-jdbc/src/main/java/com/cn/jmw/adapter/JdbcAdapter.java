@@ -17,7 +17,9 @@ import java.sql.*;
 
 /**
  * @author jmw
- * @Description 使用次类以及子类  可以通过try 自动关闭资源
+ * @Description 使用次类以及子类  可以通过try 自动关闭资源.
+ * JDBC适配器，用于从JDBC数据源中读取数据。
+ * @param <Result> 要读取的数据类型。
  * @date 2023年04月10日 18:01
  * @Version 1.0
  */
@@ -32,14 +34,24 @@ public class JdbcAdapter implements Adapter<Boolean> {
 
     protected QueryRunner queryRunner;
 
-    protected Trie trieNode;
+    protected Trie<Object,Object> trieNode;
 
-    public JdbcAdapter(DataSource dataSource, Trie trieNode) {
+    /**
+     * 构造函数，初始化适配器。
+     * @param dataSource 数据源
+     * @param trieNode Trie树节点
+     */
+    public JdbcAdapter(DataSource dataSource, Trie<Object,Object> trieNode) {
         init(dataSource,trieNode);
     }
 
 
-    public void init(DataSource dataSource, Trie trieNode) {
+    /**
+     * 初始化适配器。
+     * @param dataSource 数据源
+     * @param trieNode Trie树节点
+     */
+    public void init(DataSource dataSource, Trie<Object,Object> trieNode) {
         try {
             if (!DefaultNonRelationalDataBaseDriver.class.getName().equals(dataSource.getDriverClassName())) {
                 Class.forName(dataSource.getDriverClassName());
@@ -53,14 +65,18 @@ public class JdbcAdapter implements Adapter<Boolean> {
         }
     }
 
-    //JDCB连接测试
+    /**
+     * 测试JDBC连接是否正常。
+     * @return 如果连接正常，则为true，否则为false。
+     */
     @Override
     public boolean test() {
-        return connection != null ? true : false;
+        return connection != null;
     }
 
     /**
-     * 流式读取 dataSource实体类中的多种数据
+     * 从JDBC数据源中读取数据。
+     * @return 读取的数据。
      */
     @Override
     public Boolean streamingRead() {

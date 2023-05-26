@@ -1,11 +1,9 @@
 package com.cn.jmw.result;
 
-import com.cn.jmw.entity.DataSource;
 import org.apache.commons.dbutils.ResultSetHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * @author jmw
