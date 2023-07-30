@@ -1,5 +1,6 @@
 package com.cn.jmw.driver;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,7 +62,7 @@ public abstract class DefaultNonRelationalDataBaseDriver {
      * 关闭指定名称的非关系型数据库连接。
      * @param name 数据库连接名称
      */
-    public void closeConnection(String name) {
+    public void closeConnection(String name) throws IOException {
         NonRelationalDataBaseConnection connection = connections.get(name);
         if (connection != null) {
             connection.close();
@@ -72,7 +73,7 @@ public abstract class DefaultNonRelationalDataBaseDriver {
     /**
      * 关闭所有非关系型数据库连接。
      */
-    public void closeAllConnections() {
+    public void closeAllConnections() throws IOException {
         for (String name : connections.keySet()) {
             closeConnection(name);
         }
